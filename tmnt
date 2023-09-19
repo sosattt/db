@@ -1,0 +1,171 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.1deb1
+-- https://www.phpmyadmin.net/
+--
+-- Хост: localhost:3306
+-- Время создания: Сен 19 2023 г., 09:24
+-- Версия сервера: 10.11.3-MariaDB-1
+-- Версия PHP: 8.2.7
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- База данных: `tmnt`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `characters`
+--
+
+CREATE TABLE `characters` (
+  `id` int(11) NOT NULL,
+  `name` varchar(30) NOT NULL,
+  `age` int(11) NOT NULL,
+  `status` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Дамп данных таблицы `characters`
+--
+
+INSERT INTO `characters` (`id`, `name`, `age`, `status`) VALUES
+(1, 'Leonardo', 15, 'alive'),
+(2, 'Raphael', 15, 'alive'),
+(3, 'Donatello', 15, 'alive'),
+(4, 'Mikelangelo', 15, 'alive'),
+(5, 'Splinter', 50, 'alive');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `fraction`
+--
+
+CREATE TABLE `fraction` (
+  `id` int(11) NOT NULL,
+  `fraction` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Дамп данных таблицы `fraction`
+--
+
+INSERT INTO `fraction` (`id`, `fraction`) VALUES
+(1, 'radiant'),
+(2, 'neutral'),
+(3, 'evil');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `race`
+--
+
+CREATE TABLE `race` (
+  `id` int(11) NOT NULL,
+  `race` varchar(30) NOT NULL,
+  `world` varchar(30) NOT NULL,
+  `properties` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Дамп данных таблицы `race`
+--
+
+INSERT INTO `race` (`id`, `race`, `world`, `properties`) VALUES
+(1, 'human', 'default', 'none'),
+(2, 'turtle', 'default', 'mutant'),
+(3, 'rat', 'default', 'mutant');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `login` varchar(30) NOT NULL,
+  `pass` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Дамп данных таблицы `users`
+--
+
+INSERT INTO `users` (`id`, `login`, `pass`) VALUES
+(1, 'user1', 'pass1'),
+(2, 'user2', 'pass2'),
+(3, 'user3', 'pass3');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `weapons`
+--
+
+CREATE TABLE `weapons` (
+  `id` int(11) NOT NULL,
+  `name` varchar(30) NOT NULL,
+  `type` varchar(30) NOT NULL,
+  `damagetype` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Дамп данных таблицы `weapons`
+--
+
+INSERT INTO `weapons` (`id`, `name`, `type`, `damagetype`) VALUES
+(1, 'Bo-staff', 'weapon', 'melee'),
+(2, 'Katana', 'weapon', 'melee'),
+(3, 'Nunchaku', 'weapon', 'melee'),
+(4, 'Sai', 'weapon', 'melee'),
+(5, 'Walking cane', 'weapon', 'melee');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `world`
+--
+
+CREATE TABLE `world` (
+  `id` int(11) NOT NULL,
+  `version` varchar(30) NOT NULL,
+  `descrip` varchar(30) NOT NULL,
+  `season` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Дамп данных таблицы `world`
+--
+
+INSERT INTO `world` (`id`, `version`, `descrip`, `season`) VALUES
+(1, '1.1', 'world1', '4'),
+(2, '2.1', 'world2', '5'),
+(3, '3.1', 'world3', '6');
+
+--
+-- Индексы сохранённых таблиц
+--
+
+--
+-- Индексы таблицы `users`
+--
+ALTER TABLE `users`
+  ADD UNIQUE KEY `id` (`id`),
+  ADD UNIQUE KEY `login` (`login`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
